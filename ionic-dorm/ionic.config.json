@@ -1,0 +1,8 @@
+{
+  "name": "ionic-dorm",
+  "app_id": "21c17a56",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,66 @@
+<ion-header>
+		<ion-navbar color="oranger">
+			<ion-title>KMUTT Dormitory</ion-title>
+			<ion-buttons start>
+					<button ion-button icon-left (click)="goChat()">
+						<ion-icon name="chatbubbles"></ion-icon>
+					</button>
+	
+			</ion-buttons>
+			
+			<ion-buttons end *ngIf="authservice.user==null">
+				<button ion-button icon-left (click)="login()">
+					<ion-icon name="contact"></ion-icon>
+				</button>
+			</ion-buttons>
+	
+			<ion-buttons end *ngIf="authservice.user!=null">
+				<button ion-button icon-left (click)="goToAccount()">
+					<ion-icon name="contact"></ion-icon>
+				</button>
+			</ion-buttons>
+		</ion-navbar>
+	
+		<ion-toolbar>
+			<ion-segment [(ngModel)]="icons" color="oranger">
+				<ion-segment-button value="sortBy" (click)="sort()">Sort by
+					<!--<ion-icon name="camera"></ion-icon>-->
+				</ion-segment-button>
+				<ion-segment-button value="filter" (click)="filter()">Filter
+					<!--	<ion-icon name="bookmark"></ion-icon>-->
+				</ion-segment-button>
+				<ion-segment-button value="clear" (click)="clear()">Clear
+					<!--	<ion-icon name="bookmark"></ion-icon>-->
+				</ion-segment-button>
+			</ion-segment>
+		</ion-toolbar>
+	</ion-header>
+	
+	<ion-content padding >
+		<ion-searchbar (ionInput)="searchDorm($event)"></ion-searchbar>
+	
+		<ion-list *ngIf="!isfiltered">
+			<ion-card *ngFor="let dorm of tasks | async" (click)="dormTapped($event,dorm)" class="card-background-page">
+				<img style="height:150px; position:unset" src="{{dorm.photoLink}}" />
+				<ion-card-content>
+					<ion-card-title style="color: white ;font-size:16px; margin:-5%">
+						{{dorm.dormitoryName}}
+					</ion-card-title>
+				</ion-card-content>
+	
+			</ion-card>
+	
+		</ion-list>
+	
+		<ion-list *ngIf="isfiltered">
+			<ion-card *ngFor="let dorm of filteredDorm" (click)="dormTapped($event,dorm)" class="card-background-page">
+				<img style="height:150px; position:unset" src="{{dorm.photoLink}}" />
+				<ion-card-content>
+					<ion-card-title style="color: white ;font-size:16px; margin:-5%">
+						{{dorm.dormitoryName}}
+					</ion-card-title>
+				</ion-card-content>
+			</ion-card>
+		</ion-list>
+	
+	</ion-content>

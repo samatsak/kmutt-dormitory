@@ -1,0 +1,80 @@
+<!--
+  Generated template for the DormDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="oranger">
+    <ion-title>KMUTT Dormitory</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{photoLink}}" />
+  <h5 style="font-weight:bold">{{dormitoryName}}
+    <span *ngIf="!this.checkFavDorm">
+      <ion-icon style="color: #ffb400;" end name="star-outline" (click)="addrmFav()"></ion-icon>
+    </span>
+    <span *ngIf="this.checkFavDorm">
+      <ion-icon style="color: #ffb400;" end name="star" (click)="addrmFav()"></ion-icon>
+    </span>
+  </h5>
+
+  <span style="display: flex">
+    <span>Your Rate: </span>
+    <rating [(ngModel)]="rating" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+      nullable="false" (ngModelChange)="onModelChange($event)">
+    </rating>
+  </span>
+  <span>
+    Rating: {{dormDetail.totalRate}}
+  </span>
+  <pre>
+  Distance: {{dormDetail.distance}} KM
+  Co KMUTT: {{coKMUTT}}
+  Type:     {{type}}
+  Phone:<span style="color:blue;" (click)="callPhone()">     {{phone}}</span>
+  E-mail:   {{email}}
+  Web site: {{webSite}}
+  Address:  {{address}}
+  Price:    {{price}}
+  Electric rate:  {{elecRate}}
+  Water rate:     {{waterRate}}
+  Parking:   {{parking}}
+  Wi-Fi:    {{wiFi}}
+  Security Guard: {{securityGuard}}
+  Key card: {{keyCard}}
+  Elevator: {{elevator}}
+  Furniture:  {{furniture}}
+  CCTV:     {{CCTV}}
+  Washing Machine:  {{washingMachine}}
+  
+
+</pre>
+  <div class="commentDeco">
+    Comments
+  </div>
+
+
+  <ion-textarea [(ngModel)]="newComment" class="boxDeco" placeholder="Comment this dormitory.. .">
+  </ion-textarea>
+
+  <ion-item style="text-align:right" (click)="addComment(dormDetail)">
+    <button type="submit" ion-button style="background-color:#ffb400; " round>Comment</button>
+  </ion-item>
+
+  <div class="container" *ngFor="let comment of allComments; let i = index">
+    <div class="dialogbox">
+      <div class="body">
+        <span class="tip tip-up"></span>
+        <div class="message">
+          <div style="font-weight: bold">{{comment.commentBy}}: </div>
+          <span style="margin-left:10px;">{{comment.message}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,157 @@
+<ion-header>
+	<ion-navbar color="oranger" hide-tabs>
+		<ion-title>KMUTT Dormitory</ion-title>
+
+		<ion-buttons start>
+			<button ion-button icon-left (click)="goToChatDorm()">
+				<ion-icon name="chatbubbles"></ion-icon>
+			</button>
+		</ion-buttons>
+			
+		<ion-buttons end>
+			<button ion-button icon-left (click)="supportLogout()">
+				<ion-icon name="contact"></ion-icon>
+			</button>
+		</ion-buttons>
+	
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="height: 110%">
+	<ion-item text-center>
+      <img src="{{dorm.photoLink}}" />
+      <div style="text-decoration: underline ;font-size:10px;" (click)="uploadPic()">Edit picture</div>
+    </ion-item>
+
+    <ion-list>
+      <form class="list" [formGroup]="dormForm">
+        <ion-item>
+          <ion-label>Name: </ion-label>
+          <ion-input type="text" formControlName="dormitoryName"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Co KMUTT: </ion-label>
+          <ion-select formControlName="coKMUTT">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Type: </ion-label>
+          <ion-select formControlName="type">
+              <ion-option value="men">Men</ion-option>
+              <ion-option value="women">Women</ion-option>
+              <ion-option value="all">All</ion-option>
+           </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Phone: </ion-label>
+          <ion-input type="tel" formControlName="phone"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>E-mail: </ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Web site: </ion-label>
+          <ion-input type="text" formControlName="webSite"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Address: </ion-label>
+          <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+  
+  		<ion-item>
+          <ion-label>Price: </ion-label>
+          <ion-input type="text" formControlName="price"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Electrix rate: </ion-label>
+          <ion-input type="text" formControlName="elecRate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Water rate: </ion-label>
+          <ion-input type="text" formControlName="waterRate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Parking: </ion-label>
+          <ion-select formControlName="parking">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Wi-fi: </ion-label>
+          <ion-select formControlName="wiFi">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Security guard: </ion-label>
+          <ion-select formControlName="securityGuard">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Key card: </ion-label>
+          <ion-select formControlName="keyCard">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Elevator: </ion-label>
+          <ion-select formControlName="elevator">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Furniture: </ion-label>
+          <ion-select formControlName="furniture">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>CCTV: </ion-label>
+          <ion-select formControlName="CCTV">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Washint machine: </ion-label>
+          <ion-select formControlName="washingMachine">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+           </ion-select>
+        </ion-item>
+      </form>
+
+      <ion-item>
+        <button ion-button block (click)="editDorm()">SAVE</button>
+      </ion-item>
+
+    </ion-list>
+
+</ion-content>

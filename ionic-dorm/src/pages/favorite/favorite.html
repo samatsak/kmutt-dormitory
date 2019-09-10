@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="oranger">
+    <ion-title>
+        KMUTT Dormitory
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="authProvider.user!=null">
+  <ion-list *ngFor="let dorm of authProvider.user.favDorm">
+  	<ion-card *ngIf="dorm.dormitoryName!= '' " (click)="dormTapped($event,dorm)" class="card-background-page">
+		<img style="height:150px; position:unset" src="{{dorm.photoLink}}" />
+			<ion-card-content>
+				<ion-card-title style="color: white ;font-size:16px; margin:-5%">
+					{{dorm.dormitoryName}}
+				</ion-card-title>
+			</ion-card-content>
+		</ion-card>
+  </ion-list>
+</ion-content>
+
+<ion-content padding *ngIf="authProvider.user==null">
+  <ion-label text-center>Please login</ion-label>
+</ion-content>

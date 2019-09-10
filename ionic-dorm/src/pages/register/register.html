@@ -1,0 +1,89 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+      <ion-navbar color="oranger">
+        <ion-title>Register</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+      <ion-list>
+      <form class="list" [formGroup]="accountForm">
+    
+          <ion-item>
+            <ion-label>
+              Display Name:
+            </ion-label>
+            <ion-input type="text" formControlName="displayName"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>
+              First name:
+            </ion-label>
+            <ion-input type="text" formControlName="firstname"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>
+              Last name:
+            </ion-label>
+            <ion-input type="text" formControlName="lastname"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>Gender:</ion-label>
+            <ion-select formControlName="gender">
+              <ion-option value="Male">Male</ion-option>
+              <ion-option value="Female">Female</ion-option>
+           </ion-select>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>Birth date:</ion-label>
+            <ion-input type="date" formControlName="birthDate"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>
+              Phone:
+            </ion-label>
+            <ion-input type="tel" formControlName="phone"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>
+              Email:
+            </ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+            <p *ngIf="accountForm.value.email == '' || accountForm.controls.email.hasError('required') && accountForm.controls.email.touched">Email is required!</p>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>
+              Password:
+            </ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+            <p *ngIf="accountForm.value.password == '' || accountForm.controls.password.hasError('required') && accountForm.controls.password.touched">Password is required!</p>
+          </ion-item>
+      </form>
+      <ion-item>
+            <ion-label>
+              Re-Password:
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="rePassword"></ion-input>
+          </ion-item>
+      </ion-list>
+      <div>
+      <ion-buttons style="text-align:center">
+          <button ion-button (click)="register()" style="background-color: orange">Submit</button>
+        </ion-buttons>
+      </div>
+    </ion-content>
